@@ -16,11 +16,19 @@ const mc = mysql.createConnection({
     host: 'localhost',
     user: 'root',
     password: '',
-    database: 'bank-web-service'
+    database: 'bank'
 });
 
 // connect to database
 mc.connect();
+
+// Enable CORS
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
+
 
 // routes
 app.get('/', function (req, res) {
